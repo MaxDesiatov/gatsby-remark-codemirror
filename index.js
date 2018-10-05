@@ -1,7 +1,10 @@
 const visit = require("unist-util-visit");
 const highlightCode = require("./highlightCode");
 
-module.exports = ({ markdownAST }, { theme, className } = {}) => {
+module.exports = (
+  { markdownAST },
+  { theme, className } = { theme: "default" }
+) => {
   visit(markdownAST, `code`, node => {
     let language = node.lang;
 
@@ -11,8 +14,7 @@ module.exports = ({ markdownAST }, { theme, className } = {}) => {
 
     node.value = `
     <div class="gatsby-highlight" data-language="${language}">
-      <pre class="${className} 
-           cm-s-${theme}"
+      <pre class="${className || ""} ${theme ? `cm-s-${theme}` : ""}"
       ><code>${highlightCode(language, node.value)}</code></pre>
     </div>`;
   });
