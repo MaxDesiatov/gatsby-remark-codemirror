@@ -1,10 +1,9 @@
 const visit = require("unist-util-visit");
 const highlightCode = require("./highlightCode");
 
-module.exports = (
-  { markdownAST },
-  { theme, className } = { theme: "default" }
-) => {
+module.exports = ({ markdownAST }, { theme, className } = {}) => {
+  theme = theme || "default";
+
   visit(markdownAST, `code`, node => {
     let language = node.lang;
 
