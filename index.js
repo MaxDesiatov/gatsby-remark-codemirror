@@ -1,3 +1,5 @@
+const visit = require("unist-util-visit");
+
 module.exports = ({ markdownAST }, { theme, className } = {}) => {
   visit(markdownAST, `code`, node => {
     let language = node.lang;
