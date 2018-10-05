@@ -1,0 +1,20 @@
+{
+  "name": "gatsby-remark-codemirror",
+  "version": "0.0.1",
+  "description": "CodeMirror syntax highlighting plugin for Remark and Gatsby",
+  "main": "index.js",
+  "repository": "https://github.com/maxdesiatov/gatsby-remark-codemirror",
+  "author": "Max Desiatov <max@desiatov.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "codemirror": "^5.40.2",
+    "unist-util-visit": "^1.4.0"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
