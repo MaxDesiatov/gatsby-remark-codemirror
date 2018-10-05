@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-codemirror",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "CodeMirror syntax highlighting plugin for Remark and Gatsby",
   "main": "index.js",
   "repository": "https://github.com/maxdesiatov/gatsby-remark-codemirror",
