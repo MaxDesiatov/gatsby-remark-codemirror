@@ -11,9 +11,9 @@ module.exports = ({ markdownAST }, { theme, className } = {}) => {
 
     node.value = `
     <div class="gatsby-highlight" data-language="${language}">
-      <pre class="${className} cm-s-${theme}">
-        <code>${highlightCode(language, node.value)}</code>
-      </pre>
+      <pre class="${className} 
+           cm-s-${theme}"
+      ><code>${highlightCode(language, node.value)}</code></pre>
     </div>`;
   });
 };
