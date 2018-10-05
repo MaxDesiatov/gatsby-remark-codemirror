@@ -1,4 +1,5 @@
 const visit = require("unist-util-visit");
+const highlightCode = require("./highlightCode");
 
 module.exports = ({ markdownAST }, { theme, className } = {}) => {
   visit(markdownAST, `code`, node => {
