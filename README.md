@@ -41,8 +41,8 @@ plugins: [
 
 #### Required: Pick a CodeMirror theme or create your own
 
-CodeMirror ships with a number of [themes][5] (previewable on the [CodeMirror
-website][6]) that you can easily include in your Gatsby site, or you can build
+CodeMirror ships with a number of [themes][1] (previewable on the [CodeMirror
+website][2]) that you can easily include in your Gatsby site, or you can build
 your own by copying and modifying an example.
 
 To load a theme, just require its CSS file in your `gatsby-browser.js` file, e.g.
