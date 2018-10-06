@@ -1,4 +1,4 @@
-# gatsby-remark-prismjs
+# gatsby-remark-codemirror
 
 Adds syntax highlighting to code blocks in your Gatsby Markdown files using
 [CodeMirror](https://codemirror.net) [Mode
