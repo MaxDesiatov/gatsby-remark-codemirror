@@ -14,6 +14,7 @@ require("codemirror/mode/elm/elm");
 require("codemirror/mode/jsx/jsx");
 require("codemirror/mode/go/go");
 require("codemirror/mode/lua/lua");
+require("./graphqlMode");
 
 module.exports = function highlightCode(language, value) {
   const elements = [];
