@@ -1,19 +1,12 @@
 const CodeMirror = require("codemirror/addon/runmode/runmode.node");
 
-require("codemirror/mode/clike/clike");
-require("codemirror/mode/javascript/javascript");
-require("codemirror/mode/swift/swift");
-require("codemirror/mode/sql/sql");
-require("codemirror/mode/shell/shell");
-require("codemirror/mode/ruby/ruby");
-require("codemirror/mode/python/python");
-require("codemirror/mode/markdown/markdown");
-require("codemirror/mode/erlang/erlang");
-require("codemirror/mode/haskell/haskell");
-require("codemirror/mode/elm/elm");
-require("codemirror/mode/jsx/jsx");
-require("codemirror/mode/go/go");
-require("codemirror/mode/lua/lua");
+CodeMirror.modeInfo.forEach(element => {
+  if (Object.keys(element).some(x => element[x] === "null")) return;
+  let mode = element["mode"];
+  let required = `codemirror/mode/${mode}/${mode}`;
+  require(required);
+});
+
 require("./graphqlMode");
 
 module.exports = function highlightCode(language, value) {
