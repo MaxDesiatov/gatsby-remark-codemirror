@@ -4,8 +4,8 @@ require("codemirror/mode/meta")
 
 CodeMirror.modeInfo.forEach(element => {
   if (Object.keys(element).some(x => element[x] === "null")) return;
-  let mode = element["mode"];
-  let required = `codemirror/mode/${mode}/${mode}`;
+  const mode = element["mode"];
+  const required = `codemirror/mode/${mode}/${mode}`;
   require(required);
 });
 
