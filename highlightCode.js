@@ -1,18 +1,18 @@
 const CodeMirror = require("codemirror/addon/runmode/runmode.node");
 
-const tagsToReplace = {
-   '&': '&amp;',
-   '<': '&lt;',
-   '>': '&gt;'
+const charactersToEncode = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;'
 };
 
-const replaceTag = function(tag) {
-   return tagsToReplace[tag] || tag;
-}
+const encodeCharacter = function(chr) {
+  return charactersToEncode[chr] || chr;
+};
 
-const safe_tags_replace = function(str) {
-    return str.replace(/[&<>]/g, replaceTag);
-}
+const encodeText = function(str) {
+  return str.replace(/[&<>]/g, encodeCharacter);
+};
 
 require("codemirror/mode/meta")
 
@@ -31,7 +31,7 @@ module.exports = function highlightCode(language, value) {
   let tokenBuf = "";
   const pushElement = (token, style) => {
     elements.push(
-      `<span ${style ? `class="cm-${style}"` : ""}>${safe_tags_replace(token)}</span>`
+      `<span ${style ? `class="cm-${style}"` : ""}>${encodeText(token)}</span>`
     );
   };
   CodeMirror.runMode(value, language, (token, style) => {
