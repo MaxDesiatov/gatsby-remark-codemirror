@@ -1,5 +1,19 @@
 const CodeMirror = require("codemirror/addon/runmode/runmode.node");
 
+const charactersToEncode = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;'
+};
+
+const encodeCharacter = function(chr) {
+  return charactersToEncode[chr] || chr;
+};
+
+const encodeText = function(str) {
+  return str.replace(/[&<>]/g, encodeCharacter);
+};
+
 require("codemirror/mode/meta")
 
 CodeMirror.modeInfo.forEach(element => {
@@ -17,7 +31,7 @@ module.exports = function highlightCode(language, value) {
   let tokenBuf = "";
   const pushElement = (token, style) => {
     elements.push(
-      `<span ${style ? `class="cm-${style}"` : ""}>${token}</span>`
+      `<span ${style ? `class="cm-${style}"` : ""}>${encodeText(token)}</span>`
     );
   };
   CodeMirror.runMode(value, language, (token, style) => {
