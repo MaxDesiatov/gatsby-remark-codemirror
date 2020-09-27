@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "prepublish": "tsc && rm -rf src && mv dist/* .",
+    "prepublish": "tsc && mv dist/* .",
     "test": "jest"
   },
   "dependencies": {
