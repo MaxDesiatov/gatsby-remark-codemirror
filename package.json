@@ -7,7 +7,11 @@
   "author": "Max Desiatov <max@desiatov.com>",
   "license": "MIT",
   "private": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "prepublish": "tsc",
     "test": "jest"
   },
   "dependencies": {
@@ -17,7 +21,11 @@
     "unist-util-visit": "^2.0.2"
   },
   "devDependencies": {
-    "jest": "^25.2.7"
+    "@types/babel__core": "^7.1.10",
+    "@types/codemirror": "0.0.98",
+    "@types/node": "^14.11.2",
+    "jest": "^25.2.7",
+    "typescript": "^4.0.3"
   },
   "keywords": [
     "gatsby",

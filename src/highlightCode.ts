@@ -1,40 +1,40 @@
 const CodeMirror = require("codemirror/addon/runmode/runmode.node");
 
-const charactersToEncode = {
+const charactersToEncode: Record<string, string> = {
   "&": "&amp;",
   "<": "&lt;",
-  ">": "&gt;"
+  ">": "&gt;",
 };
 
-const encodeCharacter = function(chr) {
+const encodeCharacter = function (chr: string) {
   return charactersToEncode[chr] || chr;
 };
 
-const encodeText = function(str) {
+const encodeText = function (str: string) {
   return str.replace(/[&<>]/g, encodeCharacter);
 };
 
-require("codemirror/mode/meta");
+import "codemirror/mode/meta";
 
-CodeMirror.modeInfo.forEach(element => {
-  if (Object.keys(element).some(x => element[x] === "null")) return;
+CodeMirror.modeInfo.forEach((element: any) => {
+  if (Object.keys(element).some((x) => element[x] === "null")) return;
   const mode = element["mode"];
   const required = `codemirror/mode/${mode}/${mode}`;
   require(required);
 });
 
-require("./graphqlMode");
+import "./graphqlMode";
 
-module.exports = function highlightCode(language, value) {
-  const elements = [];
-  let lastStyle = null;
+export default function highlightCode(language: string, value: string) {
+  const elements: string[] = [];
+  let lastStyle: string | null = null;
   let tokenBuf = "";
-  const pushElement = (token, style) => {
+  const pushElement = (token: string, style: string | null) => {
     elements.push(
       `<span${style ? ` class="cm-${style}"` : ""}>${encodeText(token)}</span>`
     );
   };
-  CodeMirror.runMode(value, language, (token, style) => {
+  CodeMirror.runMode(value, language, (token: string, style: string) => {
     if (lastStyle === style) {
       tokenBuf += token;
       lastStyle = style;
@@ -49,4 +49,4 @@ module.exports = function highlightCode(language, value) {
   pushElement(tokenBuf, lastStyle);
 
   return elements.join("");
-};
+}
