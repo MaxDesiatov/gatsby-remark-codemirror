@@ -8,7 +8,7 @@ export default (
 ) => {
   theme = theme || "default";
 
-  visit(markdownAST, `code`, (node) => {
+  visit(markdownAST, `code`, (node: any) => {
     let language = node.lang as string;
 
     // Replace the node with the markup we need to make
